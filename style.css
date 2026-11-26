@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #194668;
+  --text-deskripsi: #647b8c;
+  --orange: #c5804b;
+}
+
 body {
   font-family: "Inter", sans-serif;
   color: #647b8c;
@@ -24,7 +30,6 @@ body {
       rgba(5, 25, 40, 0.38) 100%
     ),
     url("/asset/hero-villa.jpg");
-
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -40,11 +45,18 @@ body {
 .navbar-brand {
   font-weight: 700;
   font-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-brand svg {
+  width: 28px;
+  height: 28px;
 }
 
 .hero-content {
   color: white;
-  /* background-color: brown; */
   max-width: 1300px;
   margin: auto;
   height: 100vh;
@@ -63,15 +75,10 @@ body {
 
 .hero-subtitle {
   max-width: 400px;
-  /* background-color: bisque; */
-  font-size: 1.65;
+  font-size: 16px;
   font-weight: 400;
   color: bisque;
   line-height: 1.4;
-}
-
-.navbar-brand{
-    width: 30px;
 }
 
 .feature {
@@ -164,14 +171,6 @@ body {
   color: #fff;
 }
 
- .navbar-brand svg { width: 28px; height: 28px; }
-
- :root {
-  --primary: #194668;
-  --text-deskripsi: #647b8c;
-  --orange: #c5804b;
-}
-
 /* ===== CONTACT ===== */
 .contact {
   background-color: #fff;
@@ -238,6 +237,147 @@ body {
   font-size: 13px;
   font-weight: 700;
   color: var(--primary);
+}
+
+/* ===== PROPERTY GALLERY ===== */
+.property-slider-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 10% 12%, rgba(197, 128, 75, 0.09), transparent 34%),
+    linear-gradient(180deg, #f3f7fa 0%, #fff 100%);
+  padding: 88px 0 100px;
+}
+
+.property-slider-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.property-slider-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.property-swiper {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 8px 48px;
+}
+
+.property-swiper .swiper-slide {
+  height: 330px;
+  overflow: hidden;
+  border: 1px solid rgba(25, 70, 104, 0.08);
+  border-radius: 20px;
+  background-color: #e9eef2;
+  box-shadow: 0 12px 30px rgba(25, 70, 104, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.property-swiper .swiper-slide:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(25, 70, 104, 0.18);
+}
+
+.property-swiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.property-swiper .swiper-slide:hover img {
+  transform: scale(1.04);
+}
+
+.property-slider-layout .swiper-button-prev,
+.property-slider-layout .swiper-button-next {
+  position: static;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  margin-top: -40px;
+  border-radius: 50%;
+  border: 1px solid rgba(25, 70, 104, 0.1);
+  background-color: #ffffff;
+  color: var(--primary);
+  box-shadow: 0 8px 22px rgba(25, 70, 104, 0.12);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.25s ease;
+}
+
+/* Sembunyikan panah bawaan Swiper agar tidak ganda dengan ikon FontAwesome */
+.property-slider-layout .swiper-button-prev svg,
+.property-slider-layout .swiper-button-next svg,
+.property-slider-layout .swiper-button-prev::after,
+.property-slider-layout .swiper-button-next::after {
+  display: none;
+  content: none;
+}
+
+.property-slider-layout .swiper-button-prev:hover,
+.property-slider-layout .swiper-button-next:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 12px 26px rgba(25, 70, 104, 0.25);
+}
+
+.property-slider-layout .swiper-button-prev:active,
+.property-slider-layout .swiper-button-next:active {
+  transform: scale(0.96);
+}
+
+.property-slider-layout .swiper-button-prev:focus-visible,
+.property-slider-layout .swiper-button-next:focus-visible {
+  outline: 3px solid rgba(197, 128, 75, 0.55);
+  outline-offset: 3px;
+}
+
+.property-swiper .swiper-pagination {
+  bottom: 10px;
+}
+
+.property-swiper .swiper-pagination-bullet-active {
+  background-color: var(--primary);
+}
+
+@media (max-width: 575.98px) {
+  .property-slider-section {
+    padding: 68px 0 78px;
+  }
+
+  .property-slider-layout {
+    gap: 8px;
+  }
+
+  .property-swiper .swiper-slide {
+    height: 250px;
+  }
+
+  .property-slider-layout .swiper-button-prev,
+  .property-slider-layout .swiper-button-next {
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
+  }
 }
 
 /* ===== FOOTER ===== */
